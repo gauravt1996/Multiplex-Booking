@@ -1,0 +1,235 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.0.33-community-nt
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema multiplex
+--
+
+CREATE DATABASE IF NOT EXISTS multiplex;
+USE multiplex;
+
+--
+-- Definition of table `cityreg`
+--
+
+DROP TABLE IF EXISTS `cityreg`;
+CREATE TABLE `cityreg` (
+  `cityid` int(11) NOT NULL auto_increment,
+  `cityname` varchar(45) NOT NULL,
+  `citylocation` varchar(4500) NOT NULL,
+  `citydesc` varchar(4500) NOT NULL,
+  PRIMARY KEY  (`cityid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cityreg`
+--
+
+/*!40000 ALTER TABLE `cityreg` DISABLE KEYS */;
+INSERT INTO `cityreg` (`cityid`,`cityname`,`citylocation`,`citydesc`) VALUES 
+ (2,'Gwalior','7.jpg','Gwalior'),
+ (5,'','','');
+/*!40000 ALTER TABLE `cityreg` ENABLE KEYS */;
+
+
+--
+-- Definition of table `moviebooking`
+--
+
+DROP TABLE IF EXISTS `moviebooking`;
+CREATE TABLE `moviebooking` (
+  `mbid` int(10) unsigned NOT NULL auto_increment,
+  `userid` varchar(45) NOT NULL,
+  `tid` varchar(45) NOT NULL,
+  `sid` varchar(45) NOT NULL,
+  `numseat` varchar(45) NOT NULL,
+  `stamt` varchar(45) NOT NULL,
+  `dttime` varchar(45) NOT NULL,
+  PRIMARY KEY  (`mbid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `moviebooking`
+--
+
+/*!40000 ALTER TABLE `moviebooking` DISABLE KEYS */;
+INSERT INTO `moviebooking` (`mbid`,`userid`,`tid`,`sid`,`numseat`,`stamt`,`dttime`) VALUES 
+ (1,'admin','1\r\n>','1\r\n>','11','','Mon Nov 14 07:44:33 IST 2016'),
+ (2,'admin','1','1\r\n','55','','Mon Nov 14 07:44:33 IST 2016'),
+ (3,'admin','1','3\r\n','2','','Mon Nov 14 07:44:33 IST 2016'),
+ (4,'admin','1\r\n','3\r\n','44','100\r\n','Mon Nov 14 09:22:17 IST 2016'),
+ (5,'admin','1\r\n','1\r\n','1','200','Mon Nov 14 09:50:20 IST 2016'),
+ (6,'admin','1','1','4','800','Mon Nov 14 09:50:20 IST 2016'),
+ (7,'11','1','1','2','110','Mon Nov 14 11:01:58 IST 2016');
+/*!40000 ALTER TABLE `moviebooking` ENABLE KEYS */;
+
+
+--
+-- Definition of table `moviereg`
+--
+
+DROP TABLE IF EXISTS `moviereg`;
+CREATE TABLE `moviereg` (
+  `thid` int(11) NOT NULL,
+  `mid` int(11) NOT NULL auto_increment,
+  `mname` varchar(45) NOT NULL,
+  `mrel` datetime NOT NULL,
+  `mactor` varchar(45) NOT NULL,
+  `mactress` varchar(45) NOT NULL,
+  `mdir` varchar(45) NOT NULL,
+  `mcom` varchar(45) NOT NULL,
+  `mmusic` varchar(45) NOT NULL,
+  `mdesc` varchar(450) NOT NULL,
+  PRIMARY KEY  (`mid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `moviereg`
+--
+
+/*!40000 ALTER TABLE `moviereg` DISABLE KEYS */;
+INSERT INTO `moviereg` (`thid`,`mid`,`mname`,`mrel`,`mactor`,`mactress`,`mdir`,`mcom`,`mmusic`,`mdesc`) VALUES 
+ (1,1,'Shivaay','2016-11-01 00:00:00','b','c','d','e','f','g'),
+ (1,2,'Ae Dil Hai Mushkil','2016-11-01 00:00:00','a','b','c','d','e','f'),
+ (1,3,'q','2016-11-01 00:00:00','q','q','q','sdf','q','q');
+/*!40000 ALTER TABLE `moviereg` ENABLE KEYS */;
+
+
+--
+-- Definition of table `screenreg`
+--
+
+DROP TABLE IF EXISTS `screenreg`;
+CREATE TABLE `screenreg` (
+  `thid` int(11) NOT NULL,
+  `scid` int(11) NOT NULL auto_increment,
+  `sccap` varchar(45) NOT NULL,
+  `scimg` varchar(4500) NOT NULL,
+  `scdesc` varchar(4500) NOT NULL,
+  PRIMARY KEY  (`scid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `screenreg`
+--
+
+/*!40000 ALTER TABLE `screenreg` DISABLE KEYS */;
+INSERT INTO `screenreg` (`thid`,`scid`,`sccap`,`scimg`,`scdesc`) VALUES 
+ (1,1,'90','E:PicsIMG_0893_opt.jpg','B'),
+ (1,2,'null','',''),
+ (1,3,'null','E:PicsIMG_0893_opt.jpg','C'),
+ (1,4,'null','E:PicsIMG_0893_opt.jpg','giysdh'),
+ (1,5,'150','E:PicsIMG_0890_opt.jpg','jdklx'),
+ (1,6,'aaaa','10.jpg','aaaaa');
+/*!40000 ALTER TABLE `screenreg` ENABLE KEYS */;
+
+
+--
+-- Definition of table `showreg`
+--
+
+DROP TABLE IF EXISTS `showreg`;
+CREATE TABLE `showreg` (
+  `thid` int(10) unsigned NOT NULL,
+  `scid` int(10) unsigned NOT NULL,
+  `mid` int(10) unsigned NOT NULL,
+  `shid` int(10) unsigned NOT NULL auto_increment,
+  `shtime` varchar(45) NOT NULL,
+  `shdate` date NOT NULL,
+  `samt` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`shid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `showreg`
+--
+
+/*!40000 ALTER TABLE `showreg` DISABLE KEYS */;
+INSERT INTO `showreg` (`thid`,`scid`,`mid`,`shid`,`shtime`,`shdate`,`samt`) VALUES 
+ (1,1,1,1,'8:00AM','2016-11-08',55),
+ (11,2,1,2,'8:00AM','2016-11-08',60),
+ (11,1,2,3,'11:00AM','2016-11-08',100),
+ (11,3,2,4,'8:00AM','2016-11-08',100),
+ (1,1,1,5,'8:00AM','2016-11-07',200);
+/*!40000 ALTER TABLE `showreg` ENABLE KEYS */;
+
+
+--
+-- Definition of table `theaterreg`
+--
+
+DROP TABLE IF EXISTS `theaterreg`;
+CREATE TABLE `theaterreg` (
+  `cityid` int(11) NOT NULL,
+  `thid` int(11) NOT NULL auto_increment,
+  `thicon` varchar(450) NOT NULL,
+  `thname` varchar(45) NOT NULL,
+  `thadd` varchar(4500) NOT NULL,
+  `thpin` bigint(20) NOT NULL,
+  `thphone` bigint(20) NOT NULL,
+  `themail` varchar(450) NOT NULL,
+  `thweb` varchar(450) NOT NULL,
+  `thdesc` varchar(4500) NOT NULL,
+  `thlid` varchar(45) NOT NULL,
+  `thpass` varchar(45) NOT NULL,
+  PRIMARY KEY  (`thid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `theaterreg`
+--
+
+/*!40000 ALTER TABLE `theaterreg` DISABLE KEYS */;
+INSERT INTO `theaterreg` (`cityid`,`thid`,`thicon`,`thname`,`thadd`,`thpin`,`thphone`,`themail`,`thweb`,`thdesc`,`thlid`,`thpass`) VALUES 
+ (2,1,'6.jpg','Cinepolis','DD Mall\r\nLashkarr',4740011,98765432100,'Gwalior@cinepolis.comm','www.cinepolis.comm','asdf asdf','1','1');
+/*!40000 ALTER TABLE `theaterreg` ENABLE KEYS */;
+
+
+--
+-- Definition of table `userreg`
+--
+
+DROP TABLE IF EXISTS `userreg`;
+CREATE TABLE `userreg` (
+  `uid` int(10) unsigned NOT NULL auto_increment,
+  `uname` varchar(45) NOT NULL,
+  `umob` varchar(45) NOT NULL,
+  `uemail` varchar(45) NOT NULL,
+  `ulid` varchar(45) NOT NULL,
+  `upass` varchar(45) NOT NULL,
+  PRIMARY KEY  (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userreg`
+--
+
+/*!40000 ALTER TABLE `userreg` DISABLE KEYS */;
+INSERT INTO `userreg` (`uid`,`uname`,`umob`,`uemail`,`ulid`,`upass`) VALUES 
+ (1,'gaurav','9111241000','xy@ex.com','11','11'),
+ (2,'1','1','a@a.a','admin','111');
+/*!40000 ALTER TABLE `userreg` ENABLE KEYS */;
+
+
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
